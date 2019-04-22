@@ -1,26 +1,30 @@
+let data = [
+  'https://i.imgur.com/oxss7Kr.jpg',
+  'https://i.imgur.com/M70OEe2.jpg',
+  'https://i.imgur.com/kNQ3Lkf.jpg',
+  'https://i.imgur.com/BrhpQnV.jpg',
+  'https://i.imgur.com/ScJRZpQ.jpg',
+  'https://i.imgur.com/QtDkUZR.jpg',
+  'https://i.imgur.com/qeqpR8f.jpg',
+  'https://i.imgur.com/R1dFrxj.jpg',
+  'https://i.imgur.com/puTjEVW.jpg',
+  'https://i.imgur.com/UPd9gqk.jpg',
+  'https://i.imgur.com/p0pTlep.jpg',
+  'https://i.imgur.com/RQAEeB2.jpg',
+  'https://i.imgur.com/jiq2hh7.jpg',
+  'https://i.imgur.com/LEwaaPe.jpg',
+];
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export class DataCall {
+
   // Just simulating incremental loading, don't infer anything from here
   static async get(start, count) {
-    const responseHusky = await fetch(
-      "http://5cb9f093f841d2001455e8fe.mockapi.io/paris"
-    );
-    const responseBeagle = await fetch(
-      "http://5cb9f093f841d2001455e8fe.mockapi.io/paris"
-    );
-    console.log(responseHusky);
+    await sleep(1500);
 
-    const responseJsonHusky = await responseHusky.json();
-    const responseJsonBeagle = await responseBeagle.json();
-    
-    console.log(responseJsonBeagle)
-    const fullData = responseJsonHusky.message.concat(
-      responseJsonBeagle.message
-    );
-
-    const filteredData = fullData.slice(
-      start,
-      Math.min(fullData.length, start + count)
-    );
-    return filteredData;
+    return data;
   }
 }
